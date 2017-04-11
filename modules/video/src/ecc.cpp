@@ -331,7 +331,9 @@ double cv::findTransformECC(InputArray templateImage,
         if(motionType == MOTION_HOMOGRAPHY)
             rowCount = 3;
 
-        map.create(rowCount, 3, CV_32FC1);
+        warpMatrix.create(rowCount, 3, CV_32FC1);
+        map = warpMatrix.getMat();
+
         map.setTo(Scalar(0));
         map += Mat::eye(rowCount, 3, CV_32F);
     }
